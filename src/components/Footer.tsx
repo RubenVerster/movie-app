@@ -2,6 +2,10 @@ import { useStoreActions } from 'easy-peasy';
 import { PageVariation, IButtonSchema } from '../types/index';
 import { FaStar, FaSearch } from 'react-icons/fa';
 
+/**
+ * Component used to render the footer of the page and toggle between pages
+ * @returns {JSX.Element}
+ */
 const Footer = () => {
   const setCurrentPage = useStoreActions(
     (actions: any) => actions.setCurrentPage

@@ -2,6 +2,11 @@ import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useEffect } from 'react';
 import { IMovie } from '../types';
 
+/**
+ * Component used to display the movies a user has favourited
+ * The user can use this component to review their favourited movies and remove them from the list
+ * @returns {JSX.Element}
+ */
 const Favourites = () => {
   const favourites = useStoreState((state: any) => state.favourites);
   const setCurrentMovie = useStoreActions(

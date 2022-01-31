@@ -3,6 +3,11 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 
+/**
+ * This is the modal component that is used to display the details related to a movie the user has clicked on
+ * THe user can use this component to add the movie to their list of favourites or to review the movie
+ * @returns {JSX.Element}
+ */
 const ModalComponent = () => {
   const setModalOpen = useStoreActions((actions: any) => actions.setModalOpen);
   const deleteFavorite = useStoreActions(

@@ -5,6 +5,11 @@ import debounce from 'lodash/debounce';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { IMovie } from '../types';
 
+/**
+ * This component is used to render the search page of the app
+ * It is responsible for fetching the data from the API and displaying the results after a user has typed a search query
+ * @returns {JSX.Element}
+ */
 const Search = () => {
   const { REACT_APP_TMDB_API_KEY } = process.env;
 
@@ -18,6 +23,7 @@ const Search = () => {
   }, [localSearchTerm]);
 
   const debouncedSetSearchTerm = debounce(async (e: any) => {
+    //Easter Egg 😝
     if (e.target.value.toLowerCase() === 'hello there')
       alert('General Kenobi!');
     setSearchError('');
