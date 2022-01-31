@@ -8,6 +8,7 @@ const store = createStore(
       favourites: [],
       searching: false,
       currentPage: 'home',
+      currentMovie: {},
       addFavourites: action((state, payload) => {
         state.favourites.push(payload);
       }),
@@ -27,11 +28,21 @@ const store = createStore(
         state.searching = payload;
       }),
       setCurrentPage: action((state, payload) => {
+        if (state.currentPage === payload) return;
         state.currentPage = payload;
+      }),
+      setCurrentMovie: action((state, payload) => {
+        state.currentMovie = payload;
       }),
     },
     {
-      allow: ['searchedTerm', 'searchResults', 'favourites', 'currentPage'],
+      allow: [
+        'searchedTerm',
+        'searchResults',
+        'favourites',
+        'currentPage',
+        'currentMovie',
+      ],
     }
   )
 );
