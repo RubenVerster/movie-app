@@ -5,8 +5,14 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 
 const ModalComponent = () => {
   const setModalOpen = useStoreActions((actions: any) => actions.setModalOpen);
+  const deleteFavorite = useStoreActions(
+    (actions: any) => actions.deleteFavorite
+  );
+  const addFavourites = useStoreActions(
+    (actions: any) => actions.addFavourites
+  );
   const modalOpen = useStoreState((state: any) => state.modalOpen);
-
+  const favouritesIds = useStoreState((state: any) => state.favouritesIds);
   const currentMovie = useStoreState((state: any) => state.currentMovie);
   const [open, setOpen] = useState(modalOpen);
   let selectedMovie = currentMovie;
@@ -18,6 +24,22 @@ const ModalComponent = () => {
   useEffect(() => {
     setOpen(modalOpen);
   }, [modalOpen]);
+
+  const determineFavouriteIcon = () => {
+    if (favouritesIds.includes(selectedMovie.id)) {
+      return <FaStar className='text-yellow-500' />;
+    } else {
+      return <FaRegStar className='text-yellow-500' />;
+    }
+  };
+
+  const toggleFavourite = () => {
+    if (favouritesIds.includes(selectedMovie.id)) {
+      deleteFavorite(selectedMovie.id);
+    } else {
+      addFavourites(selectedMovie);
+    }
+  };
 
   return (
     <Modal centered show={open}>
@@ -39,8 +61,13 @@ const ModalComponent = () => {
           >
             Close
           </Button>
-          <Button variant='warning' onClick={() => {}}>
-            <FaRegStar size={21} />
+          <Button
+            variant='warning'
+            onClick={() => {
+              toggleFavourite();
+            }}
+          >
+            {determineFavouriteIcon()}
           </Button>
         </Modal.Footer>
       </Modal.Dialog>

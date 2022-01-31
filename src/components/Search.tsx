@@ -59,8 +59,8 @@ const Search = () => {
   };
 
   const handleModalOpen = (movie: any) => {
-    setModalOpen(true);
     setCurrentMovie(movie);
+    setModalOpen(true);
   };
 
   const generateMovies = () => {

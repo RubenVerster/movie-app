@@ -1,27 +1,37 @@
-import { useStoreState, useStoreActions } from 'easy-peasy';
-import { useState } from 'react';
+import { useStoreActions, useStoreState } from 'easy-peasy';
+import { useEffect } from 'react';
 
 const Favourites = () => {
   const favourites = useStoreState((state: any) => state.favourites);
-  const setFavourites = useStoreActions(
-    (actions: any) => actions.setFavourites
+  const setCurrentMovie = useStoreActions(
+    (actions: any) => actions.setCurrentMovie
   );
+  const setModalOpen = useStoreActions((actions: any) => actions.setModalOpen);
 
-  const currentMovie = useStoreState((state: any) => state.currentMovie);
-  console.log(currentMovie);
+  const handleModalOpen = (movie: any) => {
+    setModalOpen(true);
+    setCurrentMovie(movie);
+  };
+
+  useEffect(() => {
+    renderFavourites();
+  }, [favourites]);
 
   const renderFavourites = () => {
     return favourites.map((movie: any) => (
       <div
         key={movie.title}
-        className='h-36 my-2 w-100 flex flex-row border-2 rounded-md border-l-none overflow-hidden'
+        className='h-36 my-2 w-100 flex flex-row border-2 rounded-md border-l-none overflow-hidden cursor-pointer'
+        onClick={() => {
+          handleModalOpen(movie);
+        }}
       >
         <img
           className='h-full  '
-          src={`https://image.tmdb.org/t/p/w500//${currentMovie.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w500//${movie.poster_path}`}
           alt='Poster'
         />
-        <div className='m-auto text-xl md:text-md'>{currentMovie.title}</div>
+        <div className='m-auto text-xl md:text-md'>{movie.title}</div>
       </div>
     ));
   };
