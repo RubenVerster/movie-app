@@ -4,17 +4,11 @@ import { InputGroup, FormControl, Button } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import debounce from 'lodash/debounce';
 import { SearchType } from '../types';
-import { useStoreState, useStoreActions } from 'easy-peasy';
 
 const Search = () => {
   const { REACT_APP_TMDB_API_KEY } = process.env;
 
-  const searchedTerm = useStoreState((state: any) => state.searchedTerm);
-
   const [localSearchTerm, setLocalSearchTerm] = useState<string>('');
-  const setSearchTerm = useStoreActions(
-    (actions: any) => actions.setSearchTerm
-  );
 
   useEffect(() => {
     if (localSearchTerm.length <= 0) return;
@@ -48,8 +42,8 @@ const Search = () => {
   //   }
 
   return (
-    <div className='mt-4 w-1/2 sm:w-100 flex items-center justify-center'>
-      <InputGroup className='mb-3 max-w-lg'>
+    <div className='mt-4 w-1/2 w-100 max-w-lg flex items-center justify-center'>
+      <InputGroup className='mb-3  sm:w-100'>
         <FormControl
           onChange={(e) => {
             debouncedSetSearchTerm(e);

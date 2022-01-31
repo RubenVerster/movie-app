@@ -3,7 +3,6 @@ import { createStore, action, persist } from 'easy-peasy';
 const store = createStore(
   persist(
     {
-      searchedTerm: '',
       searchResults: [],
       favourites: [],
       searching: false,
@@ -17,9 +16,6 @@ const store = createStore(
       }),
       clearResults: action((state) => {
         state.searchResults = [];
-      }),
-      setSearchTerm: action((state, payload) => {
-        state.searchedTerm = payload;
       }),
       setSearchResults: action((state, payload) => {
         state.searchResults = payload;
@@ -36,13 +32,7 @@ const store = createStore(
       }),
     },
     {
-      allow: [
-        'searchedTerm',
-        'searchResults',
-        'favourites',
-        'currentPage',
-        'currentMovie',
-      ],
+      allow: ['searchResults', 'favourites', 'currentPage', 'currentMovie'],
     }
   )
 );
