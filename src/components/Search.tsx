@@ -82,7 +82,7 @@ const Search = () => {
   };
 
   return (
-    <div className='mt-4 flex flex-col items-center justify-center mb-32'>
+    <div className='mt-4 flex flex-col items-center justify-center mb-32 w-100'>
       <InputGroup className='mb-3 px-2 max-w-lg sm:w-100'>
         <FormControl
           onChange={(e) => {
