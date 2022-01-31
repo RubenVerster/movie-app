@@ -3,7 +3,7 @@ import axios from 'axios';
 import { InputGroup, FormControl, Spinner } from 'react-bootstrap';
 import debounce from 'lodash/debounce';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { IResult, IMovie } from '../types';
+import { IMovie } from '../types';
 
 const Search = () => {
   const { REACT_APP_TMDB_API_KEY } = process.env;
@@ -18,6 +18,8 @@ const Search = () => {
   }, [localSearchTerm]);
 
   const debouncedSetSearchTerm = debounce(async (e: any) => {
+    if (e.target.value.toLowerCase() === 'hello there')
+      alert('General Kenobi!');
     setSearchError('');
     await setLocalSearchTerm(e.target.value);
   }, 777);
@@ -40,7 +42,7 @@ const Search = () => {
       if (response.data.results.length > 0) {
         setSearchError('');
         setSearchResults(
-          //filter out any movies tat dont have image poster
+          //filter out any movies that dont have image poster
           response.data.results.filter(
             (movie: IMovie) => movie.poster_path !== null
           )

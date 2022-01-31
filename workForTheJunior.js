@@ -8,3 +8,4 @@
 //add loading state to favourite when user clicks it, prohibits spamming the favourite button :P
 //look at these docs and type the actions and reducers in the app https://easy-peasy.dev/docs/tutorials/typescript.html
 //make the favourites button looks better
+//add a default CTA when the user first lands on the page
