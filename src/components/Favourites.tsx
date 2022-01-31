@@ -1,5 +1,6 @@
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { useEffect } from 'react';
+import { IMovie } from '../types';
 
 const Favourites = () => {
   const favourites = useStoreState((state: any) => state.favourites);
@@ -8,7 +9,7 @@ const Favourites = () => {
   );
   const setModalOpen = useStoreActions((actions: any) => actions.setModalOpen);
 
-  const handleModalOpen = (movie: any) => {
+  const handleModalOpen = (movie: IMovie) => {
     setModalOpen(true);
     setCurrentMovie(movie);
   };
@@ -18,7 +19,7 @@ const Favourites = () => {
   }, [favourites]);
 
   const renderFavourites = () => {
-    return favourites.map((movie: any) => (
+    return favourites.map((movie: IMovie) => (
       <div
         key={movie.title}
         className='h-36 my-2 w-100 flex flex-row border-2 rounded-md border-l-none overflow-hidden cursor-pointer'

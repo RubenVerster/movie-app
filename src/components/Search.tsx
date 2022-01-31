@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { InputGroup, FormControl, Button, Spinner } from 'react-bootstrap';
-import { FaSearch } from 'react-icons/fa';
+import { InputGroup, FormControl, Spinner } from 'react-bootstrap';
 import debounce from 'lodash/debounce';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { IResult } from '../types';
+import { IResult, IMovie } from '../types';
 
 const Search = () => {
   const { REACT_APP_TMDB_API_KEY } = process.env;
@@ -43,7 +42,7 @@ const Search = () => {
         setSearchResults(
           //filter out any movies tat dont have image poster
           response.data.results.filter(
-            (movie: any) => movie.poster_path !== null
+            (movie: IMovie) => movie.poster_path !== null
           )
         );
       } else {
@@ -58,14 +57,14 @@ const Search = () => {
     }
   };
 
-  const handleModalOpen = (movie: any) => {
+  const handleModalOpen = (movie: IMovie) => {
     setCurrentMovie(movie);
     setModalOpen(true);
   };
 
   const generateMovies = () => {
     console.log('generate movies');
-    return searchResults.map((movie: any) => {
+    return searchResults.map((movie: IMovie) => {
       return (
         <div
           key={movie.id}
