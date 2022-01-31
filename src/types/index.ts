@@ -41,12 +41,6 @@ export interface IButtonSchema {
   label: string;
   icon: ReactElement;
 }
-
-export enum SearchType {
-  movie = 'movie',
-  details = 'details',
-}
-
 export enum PageVariation {
   favourites = 'favourites',
   search = 'search',
