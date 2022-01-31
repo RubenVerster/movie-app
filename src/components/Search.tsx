@@ -60,6 +60,7 @@ const Search = () => {
 
   useEffect(() => {
     generateMovies();
+    console.log(searchResults);
   }, [searchResults]);
 
   const handleModalOpen = (movie: any) => {
@@ -73,7 +74,7 @@ const Search = () => {
       return (
         <div
           key={movie.id}
-          className='sm:w-1/2 md:w-1/4 lg:w-1/6 m-2'
+          className='sm:w-full md:w-1/2 lg:w-1/4 m-2'
           onClick={() => handleModalOpen(movie)}
         >
           <img
