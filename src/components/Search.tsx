@@ -58,23 +58,18 @@ const Search = () => {
     }
   };
 
-  useEffect(() => {
-    generateMovies();
-    console.log(searchResults);
-  }, [searchResults]);
-
   const handleModalOpen = (movie: any) => {
     setModalOpen(true);
     setCurrentMovie(movie);
   };
 
   const generateMovies = () => {
-    console.log(searchResults);
+    console.log('generate movies');
     return searchResults.map((movie: any) => {
       return (
         <div
           key={movie.id}
-          className='sm:w-full md:w-1/2 lg:w-1/4 m-2'
+          className='sm:w-full md:w-1/2 lg:w-1/4 p-2'
           onClick={() => handleModalOpen(movie)}
         >
           <img
@@ -88,8 +83,8 @@ const Search = () => {
   };
 
   return (
-    <div className='mt-4 w-screen max-w-lg flex flex-col items-center justify-center mb-32'>
-      <InputGroup className='mb-3  sm:w-100'>
+    <div className='mt-4 flex flex-col items-center justify-center mb-32'>
+      <InputGroup className='mb-3 px-2 max-w-lg sm:w-100'>
         <FormControl
           onChange={(e) => {
             debouncedSetSearchTerm(e);
@@ -98,25 +93,19 @@ const Search = () => {
           aria-label='Search For A Movie...'
           aria-describedby='basic-addon2'
         />
-        <Button
-          onClick={(e) => console.log('search')}
-          variant='outline-secondary'
-          id='button-addon2'
-        >
-          <FaSearch />
-        </Button>
       </InputGroup>
-      <div className='flex flex-row'>
-        {searching && (
-          <div>
-            <Spinner animation='border' role='status'>
-              <span className='visually-hidden'>Loading...</span>
-            </Spinner>
-          </div>
-        )}
-        {searchError && (
-          <h2 className='text-red-700 text-bold'>{searchError}</h2>
-        )}
+      {searching && (
+        <div>
+          <Spinner animation='border' role='status'>
+            <span className='visually-hidden'>Loading...</span>
+          </Spinner>
+        </div>
+      )}
+      {searchError && <h2 className='text-red-700 text-bold'>{searchError}</h2>}
+      <div
+        className='flex flex-row items-center justify-center w-75
+      '
+      >
         <div className='flex flex-wrap flex-row w-full items-center'>
           {searchResults.length > 0 && generateMovies()}
         </div>

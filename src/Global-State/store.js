@@ -6,10 +6,20 @@ const store = createStore(
       modalOpen: false,
       searchResults: [],
       favourites: [],
+      favouritesIds: [],
       currentPage: 'home',
       currentMovie: {},
       addFavourites: action((state, payload) => {
         state.favourites.push(payload);
+        state.favouritesIds.push(payload.id);
+      }),
+      deleteFavorite: action((state, payload) => {
+        state.favourites = state.favourites.filter(
+          (movie) => movie.id !== payload
+        );
+        state.favouritesIds = state.favouritesIds.filter(
+          (id) => id !== payload
+        );
       }),
       clearSearch: action((state) => {
         state.searchedTerm = '';
@@ -32,7 +42,13 @@ const store = createStore(
       }),
     },
     {
-      allow: ['searchResults', 'favourites', 'currentPage', 'currentMovie'],
+      allow: [
+        'searchResults',
+        'favourites',
+        'currentPage',
+        'currentMovie',
+        'favouritesIds',
+      ],
     }
   )
 );
