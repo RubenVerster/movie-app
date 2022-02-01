@@ -11,3 +11,5 @@ Once dependencies have been installed and you've added your API key, you can sta
 
 If you're working on development, have the SCSS compiler running by using 'npm run compile-sass'
 This compiles the SCSS you write into CSS
+
+if you're reading this, search 'Hello There' :D
