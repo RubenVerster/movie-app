@@ -42,7 +42,7 @@ const Favourites = () => {
     ));
   };
 
-  return <div className='mt-4 w-100 max-w-lg '>{renderFavourites()}</div>;
+  return <div className='mt-4 w-100 max-w-lg mb-36'>{renderFavourites()}</div>;
 };
 
 export default Favourites;

@@ -32,9 +32,9 @@ const ModalComponent = () => {
 
   const determineFavouriteIcon = () => {
     if (favouritesIds.includes(selectedMovie.id)) {
-      return <FaStar className='text-yellow-500' />;
+      return <FaStar className='text-white' />;
     } else {
-      return <FaRegStar className='text-yellow-500' />;
+      return <FaRegStar className='text-white' />;
     }
   };
 

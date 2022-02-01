@@ -71,12 +71,11 @@ const Search = () => {
   };
 
   const generateMovies = () => {
-    console.log('generate movies');
     return searchResults.map((movie: IMovie) => {
       return (
         <div
           key={movie.id}
-          className='sm:w-full md:w-1/2 lg:w-1/4 p-2'
+          className='sm:w-full md:w-1/2 lg:w-1/4 p-2 cursor-pointer'
           onClick={() => handleModalOpen(movie)}
         >
           <img

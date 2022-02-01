@@ -10,6 +10,7 @@ const store = createStore(
       currentPage: 'home',
       currentMovie: {},
       addFavourites: action((state, payload) => {
+        if(state.favouritesIds.includes(payload.id)) return;
         state.favourites.push(payload);
         state.favouritesIds.push(payload.id);
       }),
