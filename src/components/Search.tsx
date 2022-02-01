@@ -12,6 +12,7 @@ import { IMovie } from '../types';
  */
 const Search = () => {
   const { REACT_APP_TMDB_API_KEY } = process.env;
+  const allowPorn = useStoreState((state: any) => state.allowPorn);
 
   const [localSearchTerm, setLocalSearchTerm] = useState<string>('');
   const [searchError, setSearchError] = useState<string>('');
@@ -43,7 +44,7 @@ const Search = () => {
     setSearching(true);
     try {
       let response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_API_KEY}&query=${localSearchTerm}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_API_KEY}&query=${localSearchTerm}?include_adult=${allowPorn}`
       );
       if (response.data.results.length > 0) {
         setSearchError('');

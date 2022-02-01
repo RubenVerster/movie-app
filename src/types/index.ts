@@ -62,3 +62,8 @@ export enum PageVariation {
   favourites = 'favourites',
   search = 'search',
 }
+
+export enum PornFilter {
+  yes = 'yes',
+  no = 'no',
+}

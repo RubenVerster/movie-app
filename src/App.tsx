@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Favourites from './components/Favourites';
 import Search from './components/Search';
 import ModalComponent from './components/ModalComponent';
+import PornModal from './components/PornModal';
 
 import { useStoreRehydrated, useStoreState } from 'easy-peasy';
 import { Spinner } from 'react-bootstrap';
@@ -34,6 +35,7 @@ const App = () => {
           {currentPage && renderPage()}
           <Footer />
           <ModalComponent />
+          <PornModal />
         </>
       ) : (
         <Spinner animation='border' role='status'>

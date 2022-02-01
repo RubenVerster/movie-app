@@ -4,13 +4,14 @@ const store = createStore(
   persist(
     {
       modalOpen: false,
+      allowPorn: false,
       searchResults: [],
       favourites: [],
       favouritesIds: [],
       currentPage: 'home',
       currentMovie: {},
       addFavourites: action((state, payload) => {
-        if(state.favouritesIds.includes(payload.id)) return;
+        if (state.favouritesIds.includes(payload.id)) return;
         state.favourites.push(payload);
         state.favouritesIds.push(payload.id);
       }),
@@ -41,6 +42,9 @@ const store = createStore(
       setModalOpen: action((state, payload) => {
         state.modalOpen = payload;
       }),
+      setAllowPorn: action((state, payload) => {
+        state.allowPorn = payload;
+      }),
     },
     {
       allow: [
@@ -49,6 +53,7 @@ const store = createStore(
         'currentPage',
         'currentMovie',
         'favouritesIds',
+        'allowPorn',
       ],
     }
   )
