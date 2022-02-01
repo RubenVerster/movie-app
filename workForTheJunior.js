@@ -9,3 +9,4 @@
 //make the favourites button looks better
 //add a default CTA when the user first lands on the page
 //sizes on button in footer
+//move te search bar into the header and make it mobile responsive
