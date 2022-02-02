@@ -44,7 +44,7 @@ const Search = () => {
     setSearching(true);
     try {
       let response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_API_KEY}&query=${localSearchTerm}?include_adult=${allowPorn}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_TMDB_API_KEY}&query=${localSearchTerm}&allow_adult=${allowPorn}`
       );
       if (response.data.results.length > 0) {
         setSearchError('');
